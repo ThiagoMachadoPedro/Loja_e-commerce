@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
-//acesso role
+
 @Entity
 @Table(name = "acesso")
 @SequenceGenerator(name = "seq_acesso", sequenceName = "seq_acesso", initialValue = 1, allocationSize = 1)
