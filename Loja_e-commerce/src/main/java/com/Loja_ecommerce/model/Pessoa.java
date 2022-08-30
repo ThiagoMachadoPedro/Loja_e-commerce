@@ -1,5 +1,6 @@
 package com.Loja_ecommerce.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // para não criar no banco de dados uma pessoa abstração
 @SequenceGenerator(name = "seq_pessoa", sequenceName = "seq_pessoa", initialValue = 1, allocationSize = 1)
-public abstract class Pessoa { // abstração pra não ser invocada diretamente só os atributos
+public abstract class Pessoa implements Serializable{ // abstração pra não ser invocada diretamente só os atributos
 
 	private static final long serialVersionUID = 1L;
 
