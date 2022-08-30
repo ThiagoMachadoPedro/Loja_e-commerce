@@ -46,9 +46,7 @@ public class Usuario implements UserDetails {// implementa methodos para salvar 
 
 	@OneToMany(fetch = FetchType.LAZY) //
 	@JoinTable(name = "usuarios_acesso", uniqueConstraints = @UniqueConstraint(columnNames = { "usuario_id",
-			"acesso_id" }/* aqui para não criar usuario repitido */ ,
-
-			name = "unique_acesso_user"), joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario", unique = false,
+			"acesso_id" }/* aqui para não criar usuario repitido */ , name = "unique_acesso_user"), joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario", unique = false,
 
 					foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)), inverseJoinColumns = @JoinColumn(name = "acesso_id",
 
