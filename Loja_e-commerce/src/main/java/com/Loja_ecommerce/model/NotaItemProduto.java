@@ -1,11 +1,17 @@
 package com.Loja_ecommerce.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,12 +26,18 @@ public class NotaItemProduto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_nota_item_produto")
 	private Long id;
-	
+	@Column(nullable = false)
 	private Double quantidadeItens;
 	
+	@ManyToOne
+	@JoinColumn(name = "produto_id", nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produto_fk"))
 	private Produto produtoNota;
 	
-	private Double notaFiscal;
+	@ManyToOne
+	@JoinColumn(name = "nota_fical_compra_id", nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "nota_fiscal_compra_fk"))
+	private NotaFiscalCompra notaFiscal;
 
 	public Long getId() {
 		return id;
@@ -51,16 +63,31 @@ public class NotaItemProduto implements Serializable{
 		this.produtoNota = produtoNota;
 	}
 
-	public Double getNotaFiscal() {
+	public NotaFiscalCompra getNotaFiscal() {
 		return notaFiscal;
 	}
 
-	public void setNotaFiscal(Double notaFiscal) {
+	public void setNotaFiscal(NotaFiscalCompra notaFiscal) {
 		this.notaFiscal = notaFiscal;
 	}
-	
-	
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NotaItemProduto other = (NotaItemProduto) obj;
+		return Objects.equals(id, other.id);
+	}
+
 	
 	
 }
