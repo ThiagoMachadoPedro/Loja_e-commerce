@@ -14,12 +14,12 @@ public class AcessoServices {
 	
 
 	
-	public AcessoRepository save(Acesso acesso) {
+	public Acesso save(Acesso acesso) {
 		
 		acesso.setDescricao("ROLE_ADMIN");
 		
 		
-		return (AcessoRepository) acessoRepository.save(acesso); 
+		return acessoRepository.save(acesso); 
 		
 	}
 	
