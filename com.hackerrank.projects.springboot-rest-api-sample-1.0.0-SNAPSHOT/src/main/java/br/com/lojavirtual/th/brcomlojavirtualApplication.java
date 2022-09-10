@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EntityScan(basePackages = "br.com.**")
-@ComponentScan(basePackages = "br.com.**")
-@EnableJpaRepositories("br.com.**")
+@EntityScan(basePackages = "br.com.*")
+@ComponentScan(basePackages = "br.com.*")
+@EnableJpaRepositories("br.com.*")
 @EnableTransactionManagement // resolve a parte de transaçoes com banco de dados
 public class brcomlojavirtualApplication {
 

@@ -20,9 +20,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter implements H
 public void configure(WebSecurity web) throws Exception {
 	
 	
-	/**/
+	/*libera os end point*/
 	web.ignoring().antMatchers(HttpMethod.GET,"/salvarAcesso").
-	antMatchers(HttpMethod.POST, "/salvarAcesso");
+	antMatchers(HttpMethod.POST, "/salvarAcesso","/deletaAcesso");
 	
 }
 	

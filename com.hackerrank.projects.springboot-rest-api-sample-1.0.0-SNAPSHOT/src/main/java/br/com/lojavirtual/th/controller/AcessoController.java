@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lojavirtual.th.model.Acesso;
+import br.com.lojavirtual.th.repository.AcessoRepository;
 import br.com.lojavirtual.th.services.AcessoServices;
 
 @Controller
@@ -19,19 +20,25 @@ public class AcessoController {
 	@Autowired
 	private AcessoServices acessoServices;
 
-	@PostMapping(value = "**/salvaAcesso")
+	@Autowired
+	private AcessoRepository acessoRepository;
+
+	@PostMapping(value = "**/salvarAcesso")
 	@ResponseBody
 	public ResponseEntity<Acesso> salvaAcesso(@RequestBody Acesso acesso) {
 
 		Acesso acessoSalvo = acessoServices.save(acesso);
-		
-		return new ResponseEntity<Acesso>(acessoSalvo,HttpStatus.OK);
+
+		return new ResponseEntity<Acesso>(acessoSalvo, HttpStatus.OK);
 	}
 
-	
-	
-	
-	
-	
-	
+	@PostMapping(value = "**/deletaAcesso")
+	@ResponseBody
+	public ResponseEntity<?> deletarAcesso(@RequestBody Acesso acesso) {
+
+		acessoRepository.deleteById(acesso.getId());
+
+		return new ResponseEntity("Acesso Removido", HttpStatus.OK);
+	}
+
 }
