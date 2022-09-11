@@ -37,6 +37,7 @@ public abstract class Pessoa implements Serializable{ // abstração pra não se
 	@Column(nullable = false)
 	private String telefone;
 	
+	private String tipoPessoa;
 	
 	
 
@@ -87,6 +88,15 @@ public abstract class Pessoa implements Serializable{ // abstração pra não se
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 
 	@Override
