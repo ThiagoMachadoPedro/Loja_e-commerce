@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "acesso")
@@ -31,7 +33,7 @@ public class Acesso implements GrantedAuthority { // implementação spring segu
 
 	
 	
-	
+	@JsonIgnore
 	@Override
 	public String getAuthority() {
 		return descricao;
