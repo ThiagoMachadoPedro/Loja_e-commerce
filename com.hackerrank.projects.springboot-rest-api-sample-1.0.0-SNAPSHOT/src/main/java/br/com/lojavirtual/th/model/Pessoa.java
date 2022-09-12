@@ -40,7 +40,6 @@ public abstract class Pessoa implements Serializable{ // abstração pra não se
 	private String tipoPessoa;
 	
 	
-
 	@OneToMany(mappedBy = "pessoa",orphanRemoval = true,cascade = CascadeType.ALL,fetch = FetchType.LAZY) /* Um para muitos, mappedby apontando para pessoa ,orpha usado quando remover uma pessoa do banco
 	 o endereço dela tbm é removido fetch.lazy para carregar endereço quando submitido */
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
